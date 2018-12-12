@@ -455,6 +455,32 @@ class ZFDebug_Controller_Plugin_Debug extends Zend_Controller_Plugin_Abstract
         #ZFDebug .ZFDebug_active {background:#1a1a1a;}
         #ZFDebug .ZFDebug_panel .pre {margin:0 0 0 22px}
         #ZFDebug_exception { border:1px solid #CD0A0A;display: block; }
+        #ZFDebug .ZFDebug_panel  pre {
+            word-wrap: break-word;
+            overflow: auto;
+            background: #FAFAFA none repeat scroll 0% 0%;
+            width: 100 % ;
+            border-radius: 2px;
+            white-space: pre-wrap;
+        }
+        #ZFDebug .ZFDebug_panel pre code {
+            display: block;
+            background: transparent;
+            border: medium none;
+            color: #888;
+            padding:20px;
+            font-family:Inconsolata,Menlo,Consolas,Monaco,monospace;
+            white-space:pre;overflow:auto;
+        }
+        #ZFDebug .ZFDebug_panel  code .token.important{font-weight:normal;}
+        #ZFDebug .ZFDebug_panel  code .token.entity{cursor:help;}
+        #ZFDebug .ZFDebug_panel  pre mark, #ZFDebug .ZFDebug_panel code mark,#ZFDebug .ZFDebug_panel pre code mark{
+            background-color:#5580e4;
+            color: #fff !important;
+            padding: 2px;
+            margin: 0 2px;
+            border-radius: 2px;
+        }
     </style>
     <script type="text/javascript">
         var ZFDebugLoad = window.onload;
