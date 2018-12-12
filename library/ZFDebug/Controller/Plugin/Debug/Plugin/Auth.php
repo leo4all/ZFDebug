@@ -17,7 +17,7 @@
  * @copyright  Copyright (c) 2008-2009 ZF Debug Bar Team (http://code.google.com/p/zfdebug)
  * @license    http://code.google.com/p/zfdebug/wiki/License     New BSD License
  */
-class ZFDebug_Controller_Plugin_Debug_Plugin_Auth implements ZFDebug_Controller_Plugin_Debug_Plugin_Interface
+class ZFDebug_Controller_Plugin_Debug_Plugin_Auth extends ZFDebug_Controller_Plugin_Debug_Plugin implements ZFDebug_Controller_Plugin_Debug_Plugin_Interface
 {
     /**
      * Contains plugin identifier name
@@ -99,6 +99,16 @@ class ZFDebug_Controller_Plugin_Debug_Plugin_Auth implements ZFDebug_Controller_
      */
     public function getTab()
     {
+        return 'Auth';
+    }
+
+    /**
+     * Gets content panel for the Debugbar
+     *
+     * @return string
+     */
+    public function getPanel()
+    {
         $username = 'Not Authed';
         $role = 'Unknown Role';
 
@@ -113,16 +123,15 @@ class ZFDebug_Controller_Plugin_Debug_Plugin_Auth implements ZFDebug_Controller_
             $username = $this->_auth->getIdentity();
             $role = '';
         }
-        return $username . ' (' . $role . ')';
-    }
-
-    /**
-     * Gets content panel for the Debugbar
-     *
-     * @return string
-     */
-    public function getPanel()
-    {
-        return '';
+        if(is_array($username)){
+            $vars = '<div style="width:50%;float:left;">'
+            . '<h4>Auth</h4>'
+            . '<div id="ZFDebug_session" style="margin-left:-22px">' . $this->_cleanData($username) . '</div>'
+            . '<h4>Role</h4>'
+            . $role
+            . '</div><div style="clear:both">&nbsp;</div>';
+            return $vars;
+        }
+        return $username. ' (' . $role . ')';
     }
 }
