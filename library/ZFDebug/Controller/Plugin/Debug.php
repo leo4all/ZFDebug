@@ -65,7 +65,9 @@ class ZFDebug_Controller_Plugin_Debug extends Zend_Controller_Plugin_Abstract
         'File',
         'Variables',
         'Constants',
-        'Log'
+        'Log',
+        'Auth',
+        'Session'
         );
 
     /**
@@ -216,7 +218,7 @@ class ZFDebug_Controller_Plugin_Debug extends Zend_Controller_Plugin_Abstract
 
         $contentType = $this->getRequest()->getHeader('Content-Type');
 		if (false !== $contentType && false === strpos($contentType, 'html')) {
-	    	return;
+	    	//return;
 		}
 
         $disable = Zend_Controller_Front::getInstance()->getRequest()->getParam('ZFDEBUG_DISABLE');
